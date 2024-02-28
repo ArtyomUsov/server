@@ -1,11 +1,13 @@
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
+const router = require("./routes");
 
 const host = "127.0.0.1";
 const port = 7000;
 const app = express();
 
+app.use(router);
 app.use(express.static(`${__dirname}/assets`));
 app.use("/photos", express.static(`${__dirname}/assets/img`));
 app.use("/css", express.static(`${__dirname}/src/header`));
@@ -64,7 +66,6 @@ app.get("/src/header/style.css", (req, res) => {
   });
 });
 
-
 app.post("/api/admin", (req, res) => {
   res.status(200).send("Create admin request");
 });
@@ -76,4 +77,3 @@ app.post("/api/user", (req, res) => {
 app.listen(port, host, () => {
   console.log(`Server listens http://${host}:${port}`);
 });
-
