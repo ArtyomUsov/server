@@ -5,6 +5,7 @@ const host = "127.0.0.1";
 const port = 7000;
 const app = express();
 
+app.use(express.urlencoded());
 app.use(router);
 app.use(express.static(`${__dirname}/assets`));
 app.use("/photos", express.static(`${__dirname}/assets/img`));

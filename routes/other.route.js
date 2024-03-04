@@ -3,6 +3,31 @@ const path = require("path");
 const fs = require("fs");
 const router = new Router();
 
+function sayMyInfo(req, res, next) {
+  const { name, lastName, age } = req.query;
+
+  console.log(`Меня зовут ${name} ${lastName}, мне ${age} лет`);
+  next();
+}
+
+function sayMyInfoBody(req, res, next) {
+  const { name, lastName, age } = req.body;
+  console.log(name, lastName, age);
+  console.log(`Меня зовут ${name} ${lastName}, мне ${age} лет`);
+  next();
+}
+
+router.get("/hw4", sayMyInfo, (req, res) => {
+  const { name, lastName, age } = req.query;
+
+  res.status(200).send(`Hello ${name} ${lastName}`);
+});
+router.post("/hw4", sayMyInfoBody, (req, res) => {
+  const { name, lastName, age } = req.body;
+
+  res.status(200).send(`Hello ${name} ${lastName}`);
+});
+
 router.get("/cats", function (req, res) {
   res.status(200).send("something about cats");
 });
