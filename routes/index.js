@@ -12,6 +12,6 @@ router.use("/categories", routerCategories);
 router.use("/comments", routerComments);
 router.use("/news", routerNews);
 router.use("/user", routerUser);
-router.use("/user", routerOther);
+router.use("/other", routerOther);
 
 module.exports = router;
