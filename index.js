@@ -7,6 +7,7 @@ const port = process.env.PORT || 7000;
 const app = express();
 
 app.use(express.urlencoded());
+app.use(express.json());
 app.use(router);
 app.use(express.static(path.join(__dirname, "assets")));
 app.use("/photos", express.static(path.join(__dirname, "assets", "img")));
